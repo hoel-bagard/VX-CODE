@@ -1,4 +1,4 @@
-# VX-CODE: Explaining Object Detectors via Collective Contribution of Pixels 
+# 【CVPR 2026 Highlight】 VX-CODE: Explaining Object Detectors via Collective Contribution of Pixels
 [📝 Paper](https://arxiv.org/abs/2412.00666) | [📌 Citation](#citation)
 ___
 
