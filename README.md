@@ -1,5 +1,5 @@
 # [【CVPR 2026 Highlight】 VX-CODE: Explaining Object Detectors via Collective Contribution of Pixels](https://arxiv.org/abs/2412.00666)
-[📝 Paper](https://arxiv.org/abs/2412.00666) | [📌 Citation](#citation)
+[📝 Paper](https://openaccess.thecvf.com/content/CVPR2026/html/Yamauchi_Explaining_Object_Detectors_via_Collective_Contribution_of_Pixels_CVPR_2026_paper.html) | [📌 Citation](#citation)
 ___
 
 Official implementation of VX-CODE, proposed in “Explaining Object Detectors via Collective Contribution of Pixels.”
@@ -83,12 +83,12 @@ Useful flags for VX-CODE:
 ## Citation
 If you use this repository in your research, please cite:
 ```
-@misc{yamauchi2025,
-  title={Explaining Object Detectors via Collective Contribution of Pixels},
-  author={Toshinori Yamauchi and Hiroshi Kera and Kazuhiko Kawamoto},
-  year={2025},
-  eprint={2412.00666},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2412.00666}}
+@InProceedings{Yamauchi_2026_CVPR,
+    author    = {Yamauchi, Toshinori and Kera, Hiroshi and Kawamoto, Kazuhiko},
+    title     = {Explaining Object Detectors via Collective Contribution of Pixels},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {17046-17056}
+}
 ```
