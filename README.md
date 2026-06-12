@@ -1,6 +1,8 @@
 # [【CVPR 2026 Highlight】 VX-CODE: Explaining Object Detectors via Collective Contribution of Pixels](https://arxiv.org/abs/2412.00666)
+
 [📝 Paper](https://openaccess.thecvf.com/content/CVPR2026/html/Yamauchi_Explaining_Object_Detectors_via_Collective_Contribution_of_Pixels_CVPR_2026_paper.html) | [📌 Citation](#citation)
-___
+
+---
 
 Official implementation of VX-CODE, proposed in “Explaining Object Detectors via Collective Contribution of Pixels.”
 VX-CODE is a visual explanation method for object detectors that identifies regions contributing most to detections using greedy patch selection that considers both Shapley values and interactions.
@@ -11,6 +13,7 @@ The overall framework is shown below:
 ![VX-CODE framework overview](images/img2.jpg)
 
 ## Highlights
+
 - Ready-to-run script `run_vxcode.py` for COCO val images with Faster R-CNN or DETR.
 - Download helpers for pretrained weights (`download_weights.sh`) and COCO 2017 val images/annotations (`download_coco_dataset.sh`).
 - Minimal configs under `configs/` and sample outputs under `results/` to verify the pipeline.
@@ -18,6 +21,7 @@ The overall framework is shown below:
 - The DETR implementation is sourced from [facebookresearch/detr](https://github.com/facebookresearch/detr) and adapted in this repository.
 
 ## Repository map
+
 - `run_vxcode.py`: entry point to build a detector, run VX-CODE, and save heatmaps/patch visualizations.
 - `configs/*.yaml`: Detectron2 configs for Faster R-CNN and DETR variants.
 - `weights/`: expected location for pretrained weights downloaded by the helper script.
@@ -26,14 +30,16 @@ The overall framework is shown below:
 - `third_party/detectron2`: Detectron2 source as a submodule.
 
 ## Setup
-1) Clone the repository and pull submodules (Detectron2 lives in `third_party/detectron2`):
+
+1. Clone the repository and pull submodules (Detectron2 lives in `third_party/detectron2`):
    ```
    git clone https://github.com/tttt-0814/VX-CODE.git && cd VX-CODE
    git submodule update --init --recursive
    ```
-2) Create a Python environment with PyTorch + CUDA that matches your GPU drivers.
+2. Create a Python environment with PyTorch + CUDA that matches your GPU drivers.
 
 ## Data and weights
+
 - COCO val2017 + annotations:
   ```
   bash download_coco_dataset.sh  # defaults to datasets/coco
@@ -51,7 +57,9 @@ The overall framework is shown below:
   ```
 
 ## Running VX-CODE
+
 Run on Faster R-CNN (default config/weights):
+
 ```
 python run_vxcode.py \
   --config configs/dev_faster_rcnn_R_50_FPN_1x.yaml \
@@ -61,6 +69,7 @@ python run_vxcode.py \
 ```
 
 Run on DETR:
+
 ```
 python run_vxcode.py \
   --model_name detr \
@@ -71,17 +80,20 @@ python run_vxcode.py \
 ```
 
 Useful flags for VX-CODE:
+
 - `--vxcode_mode`: `del` (deletion) or `ins` (insertion) in patch selection.
 - `--num_patches_per_step`: number of patches identified per step (corresponding to $r$ in the paper).
 
-
 ## Notes
+
 - The scripts assume COCO is registered in Detectron2 as `coco_2017_val`. Adjust `--dataset` if you use a custom name.
 - The code switches to CPU automatically when CUDA is unavailable, but VX-CODE runs are considerably faster on GPU.
 - Increasing `--num_patches_per_step` (i.e., $r$) significantly raises the computational cost and runtime; we recommend setting it to $r \le 3$.
 
 ## Citation
+
 If you use this repository in your research, please cite:
+
 ```
 @InProceedings{Yamauchi_2026_CVPR,
     author    = {Yamauchi, Toshinori and Kera, Hiroshi and Kawamoto, Kazuhiko},
