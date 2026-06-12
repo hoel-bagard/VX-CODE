@@ -5,12 +5,32 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "detectron2",
-    "numpy>=2.2.6",
-    "scipy>=1.15.3",
-    "torch>=2.12.0",
-    "torchvision>=0.27.0",
+  "detectron2",
+  "numpy>=2.2.6",
+  "scipy>=1.15.3",
+  "torch>=2.12.0",
+  "torchvision>=0.27.0",
 ]
+
+[dependency-groups]
+lint = ["basedpyright>=1.39.7", "ruff>=0.15.17"]
 
 [tool.uv.sources]
 detectron2 = { git = "https://github.com/facebookresearch/detectron2.git" }
+
+[project.scripts]
+vxcode = "vx_code.run_vxcode:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vx_code"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint.isort]
+order-by-type = false
+known-first-party = ["uvcgan2"]

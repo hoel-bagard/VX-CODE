@@ -22,12 +22,11 @@ The overall framework is shown below:
 
 ## Repository map
 
-- `run_vxcode.py`: entry point to build a detector, run VX-CODE, and save heatmaps/patch visualizations.
+- `src/vx_code/run_vxcode.py`: entry point to build a detector, run VX-CODE, and save heatmaps/patch visualizations.
 - `configs/*.yaml`: Detectron2 configs for Faster R-CNN and DETR variants.
 - `weights/`: expected location for pretrained weights downloaded by the helper script.
 - `datasets/`: place MS-COCO val2017 images and annotations here (Detectron2 directory layout).
-- `src/`: VX-CODE implementation (`src/explanations/vxcode.py`), visualization helpers, and bundled DETR code.
-- `third_party/detectron2`: Detectron2 source as a submodule.
+- `src/`: VX-CODE implementation (`src/vx_code/explanations/vxcode.py`), visualization helpers, and bundled DETR code.
 
 ## Setup
 
@@ -63,7 +62,7 @@ The overall framework is shown below:
 Run on Faster R-CNN (default config/weights):
 
 ```bash
-uv run python run_vxcode.py \
+uv run vxcode \
   --config configs/dev_faster_rcnn_R_50_FPN_1x.yaml \
   --weights weights/faster_rcnn/model_final_b275ba.pkl \
   --dataset coco_2017_val \
@@ -73,7 +72,7 @@ uv run python run_vxcode.py \
 Run on DETR:
 
 ```bash
-uv run python run_vxcode.py \
+uv run vxcode \
   --model_name detr \
   --config configs/dev_detr_256_6_6_torchvision.yaml \
   --weights weights/detr/detr-r50-e632da11-d2.pth \
