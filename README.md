@@ -32,16 +32,18 @@ The overall framework is shown below:
 ## Setup
 
 1. Clone the repository and pull submodules (Detectron2 lives in `third_party/detectron2`):
-   ```
+   ```bash
    git clone https://github.com/tttt-0814/VX-CODE.git && cd VX-CODE
-   git submodule update --init --recursive
    ```
-2. Create a Python environment with PyTorch + CUDA that matches your GPU drivers.
+2. Install dependencies with:
+   ```bash
+   uv sync --no-build-isolation
+   ```
 
 ## Data and weights
 
 - COCO val2017 + annotations:
-  ```
+  ```bash
   bash download_coco_dataset.sh  # defaults to datasets/coco
   ```
   Detectron2 expects `datasets/coco/val2017` and `datasets/coco/annotations/instances_val2017.json`.
@@ -50,8 +52,8 @@ The overall framework is shown below:
   bash download_weights.sh  # downloads Faster R-CNN and DETR checkpoints into weights/
   ```
   For DETR, convert the torch-hub checkpoint to the Detectron2 format before use:
-  ```
-  python src/models/detr/d2/converter.py \
+  ```bash
+  uv run python src/models/detr/d2/converter.py \
     --source_model weights/detr/detr-r50-e632da11.pth \
     --output_model weights/detr/detr-r50-e632da11-d2.pth
   ```
@@ -60,8 +62,8 @@ The overall framework is shown below:
 
 Run on Faster R-CNN (default config/weights):
 
-```
-python run_vxcode.py \
+```bash
+uv run python run_vxcode.py \
   --config configs/dev_faster_rcnn_R_50_FPN_1x.yaml \
   --weights weights/faster_rcnn/model_final_b275ba.pkl \
   --dataset coco_2017_val \
@@ -70,8 +72,8 @@ python run_vxcode.py \
 
 Run on DETR:
 
-```
-python run_vxcode.py \
+```bash
+uv run python run_vxcode.py \
   --model_name detr \
   --config configs/dev_detr_256_6_6_torchvision.yaml \
   --weights weights/detr/detr-r50-e632da11-d2.pth \

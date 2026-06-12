@@ -1,0 +1,16 @@
+[project]
+name = "vx-code"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "detectron2",
+    "numpy>=2.2.6",
+    "scipy>=1.15.3",
+    "torch>=2.12.0",
+    "torchvision>=0.27.0",
+]
+
+[tool.uv.sources]
+detectron2 = { git = "https://github.com/facebookresearch/detectron2.git" }
